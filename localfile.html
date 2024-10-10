@@ -3,9 +3,37 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>H5</title>
+		<style>
+			body,*{
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+			}
+			.root_div{
+				height: 100vh;
+				background-color: #efefef;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.choose_box{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				width: 60px;
+				background-color: #0097e3;
+				border-radius: 50%;
+				height: 60px;
+			}
+		</style>
 	</head>
 	<body>
-		<h2>欢迎来到我的H5页面</h2>
+		<div class="root_div">
+			<div class="choose_box">
+				<div>+</div>
+				<div>选择文件</div>
+			</div>
+		</div>
 	</body>
 </html>
