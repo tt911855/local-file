@@ -103,9 +103,12 @@
 						if(precentComplete===100){
 							finish++
 							if(finish==totalLength){
-								wx.miniProgram.postMessage({ 
-								    isfinish:true
-								});
+								// wx.miniProgram.postMessage({ 
+								//     isfinish:true
+								// });
+								wx.miniProgram.redirectTo({
+									url:"/pages/printingType/wordAndPicture/wordAndPicture"
+								})
 							}
 						}
 						
