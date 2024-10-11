@@ -114,11 +114,13 @@
 						
 					}
 				}
-				fetch('https://cors-anywhere.herokuapp.com/http://106.54.209.151:20810/api/front/upload/file?model&pid', {
-				  method: 'POST',
-				  body: formData
-				})
-				xhr.open("POST","http://106.54.209.151:20810/api/front/upload/file?model&pid")
+				// fetch('https://cors-anywhere.herokuapp.com/http://106.54.209.151:20810/api/front/upload/file?model&pid', {
+				//   method: 'POST',
+				//   body: formData
+				// })
+				// xhr.open("POST","http://106.54.209.151:20810/api/front/upload/file?model&pid")
+				xhr.open("POST","https://cors-anywhere.herokuapp.com/http://106.54.209.151:20810/api/front/upload/file?model&pid")
+				
 				xhr.setRequestHeader("authori-zation", "1")
 				xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
 				xhr.onload=function(){
