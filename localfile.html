@@ -4,81 +4,71 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<style>
-			body,*{
-				padding: 0;
-				margin: 0;
-				overflow: hidden;
-			}
-			.root_div{
-				height: 100vh;
-				background-color: #efefef;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			}
-			.choose_box{
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-				width: 80px;
-				background-color: #0097e3;
-				border-radius: 50%;
-				height: 80px;
-				color: #fff;
-				box-sizing: content-box;
-				padding: 20px;
-			}
-			.choose_box .add-txt{
-				font-size: 40px;
-				font-weight: bold;
-				color: #fff;
-			}
-			.choose_box .txt{
-				font-size: 20px;
-			}
+		body,*{
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+		}
+		.root_div{
+			height: 100vh;
+			background-color: #efefef;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.choose_box{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 60px;
+			width: 100px;
+			background-color: #0097e3;
+			border-radius: 50%;
+			height: 60px;
+			height: 100px;
+			color: #fff;
+		}
+		.choose_box .add-txt{
+			font-size: 25px;
+			font-size: 40px;
+			font-weight: bold;
+			color: #fff;
+		}
+		.choose_box .txt{
+			font-size: 10px;
+			font-size: 20px;
+		}
 			 #progressContainer {
-					margin-top: 10px;
-					width: 100px;
-					height: 20px;
-					border: 1px solid;
-				}
-				.progress {
-					width: 0;
-					height: 20px;
-					background: green;
-				}
-				.progress-container {
-					width: 100%;
-					background: #f3f3f3;
-					border-radius: 5px;
-					overflow: hidden;
-					margin-top: 5px;
-				}
+			            margin-top: 10px;
+						width: 100px;
+						height: 20px;
+						border: 1px solid;
+			        }
+			        .progress {
+			            width: 0;
+			            height: 20px;
+			            background: green;
+			        }
+			        .progress-container {
+			            width: 100%;
+			            background: #f3f3f3;
+			            border-radius: 5px;
+			            overflow: hidden;
+			            margin-top: 5px;
+			        }
 		</style>
 	</head>
 	<body>
 		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
-		<!-- <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script> -->
 		<div class="root_div">
+			<div class="choose_box">
 			<input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.docx,.doc,.xlsx,.xlx" style="display: none;"/>
 			<div class="choose_box" id="customUpload">
-				<div class="add-txt">+</div>
-				<div class="txt">选择文件</div>
-			</div>
-			<div id="progressContainer">
-
-			</div>
+		<div class="add-txt">+</div>
+		<div class="txt">选择文件</div>
 		</div>
-		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
-		<!-- <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script> -->
-		<div class="root_div">
-			<input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.docx,.doc,.xlsx,.xlx" style="display: none;"/>
-			<div class="choose_box" id="customUpload">
-				<div class="add-txt">+</div>
-				<div class="txt">选择文件</div>
-			</div>
 			<div id="progressContainer">
 
 			</div>
@@ -118,21 +108,16 @@
 						if(precentComplete===100){
 							finish++
 							if(finish==totalLength){
-								// wx.postMessage({
-								// 	idfinish:true
-								// })
-								// wx.navigateBack()
-								window.parent.postMessage({isfinish:true})
+								wx.miniProgram.postMessage({ 
+								    isfinish:true
+								});
 							}
 						}
 						
 					}
 				}
-				// xhr.open("POST","http://106.54.209.151:20810/api/front/upload/file?model&pid")
 				xhr.open("POST","http://106.54.209.151:20810/api/front/upload/file?model&pid",true)
-				// https://cors-anywhere.herokuapp.com/http://106.54.209.151:20810/api/front/upload/file?model&pid
 				xhr.setRequestHeader("authori-zation", "1")
-				xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
 				xhr.onload=function(){
 					const result=JSON.parse(xhr.responseText)
 					if(result.code===200){
@@ -148,5 +133,5 @@
 				xhr.send(formData)
 			}
 		</script>
-	</body>
+</body>
 </html>
