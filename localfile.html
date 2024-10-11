@@ -58,7 +58,7 @@
 	</head>
 	<body>
 		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
-		<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script>
+		<!-- <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script> -->
 		<div class="root_div">
 			<input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.docx,.doc,.xlsx,.xlx" style="display: none;"/>
 			<div class="choose_box" id="customUpload">
@@ -104,17 +104,11 @@
 						if(precentComplete===100){
 							finish++
 							if(finish==totalLength){
-								// wx.miniProgram.postMessage({ 
-								//     isfinish:true
-								// });
-								// wx.miniProgram.redirectTo({
-								// 	url:"/pages/printingType/wordAndPicture/wordAndPicture"
+								// wx.postMessage({
+								// 	idfinish:true
 								// })
+								// wx.navigateBack()
 								window.parent.postMessage({isfinish:true})
-								uni.postMessage({
-									wancheng:"完成"
-								})
-								uni.navigateBack()
 							}
 						}
 						
