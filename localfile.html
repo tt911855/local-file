@@ -114,8 +114,13 @@
 						
 					}
 				}
-				xhr.open("POST","http://106.54.209.151:20810/api/front/upload/file?model&pid",true)
+				fetch('https://cors-anywhere.herokuapp.com/http://106.54.209.151:20810/api/front/upload/file?model&pid', {
+				  method: 'POST',
+				  body: formData
+				})
+				xhr.open("POST","http://106.54.209.151:20810/api/front/upload/file?model&pid")
 				xhr.setRequestHeader("authori-zation", "1")
+				xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
 				xhr.onload=function(){
 					const result=JSON.parse(xhr.responseText)
 					if(result.code===200){
